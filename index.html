@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abebe Gebremichael — Coffee Quality Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --espresso:   #1C0A04;
+  --roast:      #3B1509;
+  --mocha:      #6B3520;
+  --caramel:    #C47D3A;
+  --gold:       #D4982A;
+  --cream:      #EDD9C0;
+  --parchment:  #FAF5EF;
+  --soft:       #8C6A50;
+  --dim:        #9E7B65;
+  --white:      #FFFFFF;
+  --sidebar:    #140703;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--espresso);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--espresso);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Coffee ring decorations */
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 8px solid rgba(196,125,58,0.12);
+}
+.hero::before { width: 600px; height: 600px; top: -200px; right: -200px; }
+.hero::after  { width: 300px; height: 300px; bottom: 80px; left: 60px; border-color: rgba(196,125,58,0.08); border-width: 40px; }
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px 80px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 6vw, 86px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.0;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--caramel);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--cream);
+  font-weight: 300;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--caramel);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.7s;
+}
+
+.hero-summary {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(237,217,192,0.75);
+  max-width: 480px;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.hero-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1s;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 1px solid rgba(196,125,58,0.4);
+  border-radius: 40px;
+  color: var(--cream);
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.contact-pill:hover {
+  background: var(--caramel);
+  border-color: var(--caramel);
+  color: var(--espresso);
+  transform: translateY(-2px);
+}
+.contact-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 80px 80px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,125,58,0.2);
+  border-radius: 12px;
+  padding: 30px 24px;
+  text-align: center;
+  transition: all 0.4s;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+.stat-card:nth-child(1) { animation-delay: 0.5s; }
+.stat-card:nth-child(2) { animation-delay: 0.65s; }
+.stat-card:nth-child(3) { animation-delay: 0.8s; }
+.stat-card:nth-child(4) { animation-delay: 0.95s; }
+
+.stat-card:hover {
+  background: rgba(196,125,58,0.1);
+  border-color: var(--caramel);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--caramel);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 1.4s;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--caramel));
+  animation: pulse 2s ease infinite;
+}
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(28,10,4,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,125,58,0.2);
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  font-style: italic;
+}
+.nav-logo span { color: var(--caramel); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--caramel); }
+
+/* ══════════════════════════════════════════
+   SECTIONS
+══════════════════════════════════════════ */
+section { padding: 100px 80px; }
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 700;
+  color: var(--espresso);
+  line-height: 1.15;
+  margin-bottom: 60px;
+}
+
+.section-title em { font-style: italic; color: var(--caramel); }
+
+/* ══════════════════════════════════════════
+   EXPERTISE / ORIGINS
+══════════════════════════════════════════ */
+#expertise {
+  background: var(--espresso);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+#expertise::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 60px solid rgba(196,125,58,0.06);
+  top: -150px; right: -100px;
+  pointer-events: none;
+}
+
+#expertise .section-title { color: var(--white); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.skill-card {
+  border: 1px solid rgba(196,125,58,0.2);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: all 0.4s;
+  cursor: default;
+}
+
+.skill-card:hover {
+  background: rgba(196,125,58,0.08);
+  border-color: var(--caramel);
+  transform: translateY(-4px);
+}
+
+.skill-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.skill-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.skill-desc {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.7;
+}
+
+.origins-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--cream);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.origins-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.origin-tag {
+  padding: 8px 18px;
+  border: 1px solid rgba(196,125,58,0.35);
+  border-radius: 30px;
+  font-size: 13px;
+  color: var(--cream);
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.origin-tag:hover {
+  background: var(--caramel);
+  border-color: var(--caramel);
+  color: var(--espresso);
+  transform: scale(1.05);
+}
+
+/* ══════════════════════════════════════════
+   EXPERIENCE TIMELINE
+══════════════════════════════════════════ */
+#experience { background: var(--parchment); }
+
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--caramel), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 52px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--caramel);
+  border: 2px solid var(--parchment);
+  box-shadow: 0 0 0 3px rgba(196,125,58,0.25);
+}
+
+.timeline-period {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.timeline-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--espresso);
+  margin-bottom: 4px;
+}
+
+.timeline-org {
+  font-size: 13px;
+  color: var(--soft);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.timeline-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.timeline-bullets li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--mocha);
+  padding-left: 18px;
+  position: relative;
+}
+
+.timeline-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--caramel);
+  font-size: 11px;
+  top: 2px;
+}
+
+/* Sub-role badge */
+.sub-role {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 12px;
+  background: rgba(196,125,58,0.12);
+  border: 1px solid rgba(196,125,58,0.3);
+  border-radius: 20px;
+  color: var(--caramel);
+  margin-bottom: 14px;
+  margin-right: 6px;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL JOURNEY
+══════════════════════════════════════════ */
+#journey {
+  background: var(--roast);
+  color: var(--cream);
+}
+
+#journey .section-title { color: var(--white); }
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.journey-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,125,58,0.2);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: all 0.4s;
+}
+
+.journey-card:hover {
+  background: rgba(196,125,58,0.1);
+  border-color: var(--caramel);
+  transform: translateY(-6px);
+}
+
+.journey-flag {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.journey-country {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.journey-event {
+  font-size: 12px;
+  color: var(--caramel);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.journey-desc {
+  font-size: 13.5px;
+  color: var(--dim);
+  line-height: 1.75;
+}
+
+/* ══════════════════════════════════════════
+   CERTIFICATIONS
+══════════════════════════════════════════ */
+#certifications { background: var(--parchment); }
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cert-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 28px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid rgba(196,125,58,0.15);
+  box-shadow: 0 4px 20px rgba(28,10,4,0.06);
+  transition: all 0.3s;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(28,10,4,0.12);
+  border-color: var(--caramel);
+}
+
+.cert-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--caramel), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cert-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--espresso);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-size: 12px;
+  color: var(--soft);
+}
+
+/* ══════════════════════════════════════════
+   AWARD
+══════════════════════════════════════════ */
+#award {
+  background: linear-gradient(135deg, var(--espresso) 0%, var(--roast) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#award::before {
+  content: '★';
+  position: absolute;
+  font-size: 400px;
+  color: rgba(196,125,58,0.04);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: serif;
+}
+
+.award-card {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.award-star {
+  font-size: 56px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+  animation: spin-slow 20s linear infinite;
+}
+
+.award-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.award-org {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.award-desc {
+  font-size: 16px;
+  color: rgba(237,217,192,0.8);
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer {
+  background: var(--sidebar);
+  padding: 60px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-style: italic;
+  color: var(--white);
+}
+
+.footer-name span { color: var(--caramel); }
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 1px solid rgba(196,125,58,0.35);
+  border-radius: 30px;
+  color: var(--cream);
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-link:hover {
+  background: var(--caramel);
+  border-color: var(--caramel);
+  color: var(--espresso);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(196,125,58,0.1);
+}
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Scroll reveal base */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  section { padding: 70px 32px; }
+  nav { padding: 0 32px; }
+  .skills-grid, .journey-grid { grid-template-columns: 1fr 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 24px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">☕ Coffee Quality Expert &amp; Q-Grader</p>
+    <h1 class="hero-name">Abebe<br><em>Gebre&shy;michael</em></h1>
+    <p class="hero-title">Senior Coffee Cupper IV · Marketing Information Analyst · 30+ Years</p>
+    <div class="hero-divider"></div>
+    <p class="hero-summary">
+      Certified Q-Grader and Master Trainer with over three decades of expertise
+      across Ethiopian Arabica origins — from the highlands of Harar to the forests 
+      of Yirgacheffe. A global ambassador for Ethiopian coffee quality, traceability,
+      and market excellence.
+    </p>
+    <div class="hero-contacts">
+      <a href="tel:6124303478" class="contact-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.04a16 16 0 006.05 6.05l1.31-1.31a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        612-430-3478
+      </a>
+      <a href="mailto:testcoffeeabe@gmail.com" class="contact-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        testcoffeeabe@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/abebegebremichael" target="_blank" class="contact-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://abenezer168.github.io/abebegebremichael.github.io/abebe_gebremichael_resume.pdf" download="Abebe_Gebremichael_Resume.pdf" class="contact-pill" style="color:var(--caramel);border-color:var(--caramel);">
+        📄 Download CV
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Years in Coffee</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Q</div>
+        <div class="stat-label">Grader · CQI USA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Countries Visited</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Exporters Managed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ NAV ══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">A<span>.</span>Gebremichael</div>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#journey">Global Journey</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#award">Award</a></li>
+  </ul>
+</nav>
+
+<!-- ══ EXPERTISE ══════════════════════════════════════════ -->
+<section id="expertise">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Expertise &amp; <em>Core Skills</em></h2>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">☕</div>
+      <div class="skill-name">Coffee Cupping &amp; Sensory Analysis</div>
+      <div class="skill-desc">Certified Q-Grader evaluating fragrance, aroma, flavour, acidity, body, aftertaste, balance and uniformity across all Ethiopian Arabica origins.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Marketing Information Analysis</div>
+      <div class="skill-desc">Directing collection and dissemination of domestic and global market data to drive export growth, manage price fluctuations and ensure full sector traceability.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🏛️</div>
+      <div class="skill-name">Regulatory Policy &amp; Compliance</div>
+      <div class="skill-desc">Developing food safety regulations ensuring compliance with HACCP, FDA and CEF frameworks. Managing licensing and certification for export authorisation.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔥</div>
+      <div class="skill-name">Coffee Roasting &amp; Liquoring</div>
+      <div class="skill-desc">Advanced industrial and artisan roasting expertise gained through UNIDO, ECTA and illy's Università del Caffè in Trieste, Italy.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎓</div>
+      <div class="skill-name">Training &amp; Capacity Building</div>
+      <div class="skill-desc">Master Trainer certified by EAFCA, Kenya. Coordinated international training programs with Boot Coffee Consulting and SCAA under USAID funding.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🌍</div>
+      <div class="skill-name">Export &amp; Trade Development</div>
+      <div class="skill-desc">Promoting Ethiopian coffee on the world stage across USA, Italy, France, Morocco, Kenya and beyond — connecting origin quality to global market access.</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:16px;">
+    <p class="origins-title">Ethiopian Origins Expertise</p>
+    <div class="origins-grid">
+      <span class="origin-tag">Harar · Eastern Ethiopia</span>
+      <span class="origin-tag">Yirgacheffe · SNNPR</span>
+      <span class="origin-tag">Sidama / Sidamo</span>
+      <span class="origin-tag">Limu · Oromia</span>
+      <span class="origin-tag">Jimma · Oromia</span>
+      <span class="origin-tag">Guji · Oromia</span>
+      <span class="origin-tag">Bebeka · SNNPR</span>
+      <span class="origin-tag">Kaffa · SNNPR</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══════════════════════════════════════════ -->
+<section id="experience">
+  <p class="section-label">Career Journey</p>
+  <h2 class="section-title">Professional <em>Experience</em></h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Jan 2021 – Sep 2023</div>
+      <div class="timeline-role">Senior Coffee Cupper IV</div>
+      <div class="timeline-org">Ethiopian Coffee and Tea Authority (ECTA) · Addis Ababa, Ethiopia</div>
+      <span class="sub-role">+ Team Leader — Marketing Information Analyst</span>
+      <span class="sub-role">+ Acting Director — Marketing Directorate</span>
+      <ul class="timeline-bullets">
+        <li>Evaluated and graded coffee quality across all major Ethiopian Arabica origins against national and international export standards.</li>
+        <li>Directed collection, analysis and dissemination of domestic and global market data to drive export growth and ensure sector traceability.</li>
+        <li>Developed market forecasts and policy recommendations to enhance the global competitiveness of Ethiopian coffee, tea and spice products.</li>
+        <li>Led regulatory compliance, food safety frameworks (HACCP, FDA, CEF), licensing and export authorisation.</li>
+        <li>Delivered expert training on grading, roasting and sensory evaluation for government and private sector staff.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Jan 2010 – Dec 2020</div>
+      <div class="timeline-role">Coordinator — Coffee Quality Inspection Center</div>
+      <div class="timeline-org">Dire Dawa Coffee Quality Inspection Office · Dire Dawa, Ethiopia</div>
+      <ul class="timeline-bullets">
+        <li>Directed all technical and administrative operations of the regional inspection center for 10 years.</li>
+        <li>Supervised end-to-end sampling, grading and cupping of Harar, Yirgacheffe, Limu, Sidama and Jimma coffee lots for export.</li>
+        <li>Coordinated international training programs with Boot Coffee Consulting and SCAA under USAID funding.</li>
+        <li>Invited participant at 1st through 3rd International Ethiopian Coffee Conferences, Hilton Hotel, Addis Ababa.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Jan 1995 – Nov 2008</div>
+      <div class="timeline-role">Coffee Quality Inspector, Cupper and Grader</div>
+      <div class="timeline-org">Dire Dawa Coffee Quality Inspection Office · Dire Dawa, Ethiopia</div>
+      <ul class="timeline-bullets">
+        <li>Conducted raw evaluation and cupping for grading Harar, Yirgacheffe, Limu and Jimma coffee lots for export certification over 13 years.</li>
+        <li>Led inventory audits across warehouses of 20+ Harar coffee exporters; enforced sanitation and quality standards.</li>
+        <li>Facilitated international buyer workshops under the USAID Agri-business and Trade Expansion Program.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Sep 1990 – Dec 1994</div>
+      <div class="timeline-role">Coffee Extension Agent &amp; Inventory Supervisor</div>
+      <div class="timeline-org">Eastern Hararghe Region — Ethiopian Government · Hararghe, Ethiopia</div>
+      <ul class="timeline-bullets">
+        <li>Trained farmers in nursery preparation, red cherry harvesting and post-harvest handling techniques.</li>
+        <li>Supervised quarterly and annual inventory for 20+ exporters' warehouses in the region.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ GLOBAL JOURNEY ══════════════════════════════════════════ -->
+<section id="journey">
+  <p class="section-label">Around the World</p>
+  <h2 class="section-title">Global <em>Journey</em></h2>
+
+  <div class="journey-grid">
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇺🇸</div>
+      <div class="journey-country">United States</div>
+      <div class="journey-event">SCAA Expo · Seattle · 2014</div>
+      <div class="journey-desc">Represented Ethiopia at North America's premier specialty coffee event. Promoted Ethiopian Arabica to international roasters and importers, discussing trade opportunities and quality positioning.</div>
+    </div>
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇮🇹</div>
+      <div class="journey-country">Italy</div>
+      <div class="journey-event">Università del Caffè · Trieste (illy)</div>
+      <div class="journey-desc">Completed the prestigious professional certification at illy's world-renowned institute in Trieste — espresso science, industrial roasting, grinder calibration, barista techniques and sensory tasting analysis at the illycaffè plant.</div>
+    </div>
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇫🇷</div>
+      <div class="journey-country">France</div>
+      <div class="journey-event">International Coffee Exhibition</div>
+      <div class="journey-desc">Promoted Ethiopian coffee through live cupping demonstrations, distributed bean samples, engaged buyers in trade conversations, and gained comparative experience with coffees from Brazil, Vietnam and East Africa.</div>
+    </div>
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇲🇦</div>
+      <div class="journey-country">Morocco</div>
+      <div class="journey-event">International Coffee Exhibition</div>
+      <div class="journey-desc">Showcased Ethiopian Arabica diversity to the North African and Middle Eastern market. Conducted on-the-spot cuppings, answered trade and origin questions, and built new export partnerships.</div>
+    </div>
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇰🇪</div>
+      <div class="journey-country">Kenya</div>
+      <div class="journey-event">EAFCA Master Trainers Program · Nairobi</div>
+      <div class="journey-desc">Certified as Master Trainer by the East African Fine Coffees Association — enabling cross-regional training of trainers across East Africa's coffee industry.</div>
+    </div>
+    <div class="journey-card reveal">
+      <div class="journey-flag">🇪🇹</div>
+      <div class="journey-country">Ethiopia</div>
+      <div class="journey-event">International Coffee Conferences · Addis Ababa</div>
+      <div class="journey-desc">Contributed to expert panels on quality improvement, traceability systems and sustainable competitiveness of Ethiopian fine coffee supply chains at the Hilton Hotel, Addis Ababa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTIFICATIONS ══════════════════════════════════════════ -->
+<section id="certifications">
+  <p class="section-label">Credentials</p>
+  <h2 class="section-title">Certifications &amp; <em>Training</em></h2>
+
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certified Q-Grader</div>
+        <div class="cert-issuer">Coffee Quality Institute (CQI) · USA</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">Master Trainer</div>
+        <div class="cert-issuer">East African Fine Coffees Association (EAFCA) · Kenya</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🇮🇹</div>
+      <div>
+        <div class="cert-name">Università del Caffè Certificate</div>
+        <div class="cert-issuer">illy Coffee · Trieste, Italy</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏭</div>
+      <div>
+        <div class="cert-name">Advanced Industrial Roasting</div>
+        <div class="cert-issuer">UNIDO &amp; ECTA</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🔬</div>
+      <div>
+        <div class="cert-name">Coffee Quality Inspection: Raw, Roasting &amp; Liquoring (3-yr CLU)</div>
+        <div class="cert-issuer">Ethiopian Coffee &amp; Tea Authority (ECTA)</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">☕</div>
+      <div>
+        <div class="cert-name">Advanced Cupping &amp; Flavor Profile</div>
+        <div class="cert-issuer">Boot Coffee Consulting · USA</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">💧</div>
+      <div>
+        <div class="cert-name">Advanced Coffee Liquoring</div>
+        <div class="cert-issuer">Boot Coffee Consulting · USA</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🌿</div>
+      <div>
+        <div class="cert-name">Agribusiness Competitiveness &amp; Leadership</div>
+        <div class="cert-issuer">Adama &amp; Hawassa, Ethiopia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AWARD ══════════════════════════════════════════ -->
+<section id="award">
+  <div class="award-card">
+    <span class="award-star">★</span>
+    <div class="award-title">LOGO Award</div>
+    <div class="award-org">Boot Coffee Consulting &amp; Training · USA</div>
+    <p class="award-desc">
+      Special Contribution Recognition awarded for outstanding coordination of the Harar coffee 
+      stakeholder training program at SAMRAT Hotel, Ethiopia. Recognised by Boot Coffee USA for 
+      excellence in knowledge transfer and industry capacity building across the Ethiopian coffee sector.
+    </p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-name">Abebe <span>Gebremichael</span></div>
+    <div style="font-size:13px;color:var(--dim);margin-top:6px;">Alexandria, VA · Available for Opportunities</div>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:testcoffeeabe@gmail.com" class="footer-link" target="_blank" rel="noopener">✉ Email</a>
+    <a href="tel:6124303478" class="footer-link">📞 Call</a>
+    <a href="https://linkedin.com/in/abebegebremichael" target="_blank" class="footer-link">LinkedIn</a>
+  </div>
+</footer>
+<div class="footer-copy" style="background:var(--sidebar);padding:0 80px 28px;">
+  © 2025 Abebe Gebremichael · Senior Coffee Quality Expert &amp; Certified Q-Grader
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+// Staggered reveal for cards
+document.querySelectorAll('.skills-grid .skill-card, .journey-grid .journey-card, .cert-grid .cert-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.08}s`;
+});
+</script>
+</body>
+</html>
