@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abebe Gebremichael — Coffee Quality Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--esp:#1C0A04;--roast:#3B1509;--mocha:#6B3520;--car:#C47D3A;--gold:#D4982A;--cream:#EDD9C0;--parch:#FAF5EF;--soft:#8C6A50;--dim:#9E7B65;--sidebar:#140703;--white:#fff}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--parch);color:var(--esp);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+#cur{position:fixed;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--car);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+#curdot{position:fixed;width:5px;height:5px;border-radius:50%;background:var(--car);pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.7}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--esp);display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(196,125,58,.08)}
+.ring1{width:680px;height:680px;top:-200px;right:-160px;border-width:55px}
+.ring2{width:320px;height:320px;bottom:90px;left:50px;border-width:28px;border-color:rgba(196,125,58,.05)}
+.ring3{width:180px;height:180px;top:38%;right:32%;border-width:1px;animation:spin 28s linear infinite}
+.steam-box{position:absolute;bottom:38px;right:90px;opacity:.16;display:flex;align-items:flex-end;gap:0}
+.stm{width:3px;border-radius:4px;background:linear-gradient(to top,var(--car),transparent);animation:sr 3s ease-in-out infinite;transform-origin:bottom}
+.stm1{height:58px}.stm2{height:78px;margin-left:11px;animation-delay:.6s}.stm3{height:48px;margin-left:11px;animation-delay:1.2s}
+@keyframes sr{0%{transform:scaleX(1) translateY(0);opacity:.8}50%{transform:scaleX(1.5) translateY(-18px);opacity:.35}100%{transform:scaleX(.8) translateY(-38px);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+.hleft{display:flex;flex-direction:column;justify-content:center;padding:80px 50px 80px 80px;position:relative;z-index:2}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--car);margin-bottom:22px;opacity:0;animation:fadeUp .8s ease forwards .2s}
+.hname{font-family:'Playfair Display',serif;font-size:clamp(46px,5.2vw,78px);font-weight:900;color:var(--white);line-height:1.0;margin-bottom:5px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.hname em{font-style:italic;color:var(--car)}
+.hsubtitle{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--cream);font-weight:300;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .6s}
+.hdivider{width:48px;height:2px;background:var(--car);margin-bottom:26px;opacity:0;animation:fadeUp .8s ease forwards .65s}
+.hsummary{font-size:14px;line-height:1.88;color:rgba(237,217,192,.7);max-width:450px;margin-bottom:40px;opacity:0;animation:fadeUp .8s ease forwards .75s}
+.hbtns{display:flex;flex-wrap:wrap;gap:11px;opacity:0;animation:fadeUp .8s ease forwards .9s}
+.btn-p{padding:12px 28px;background:var(--car);color:var(--esp);border-radius:40px;font-size:13px;font-weight:500;text-decoration:none;transition:all .3s;letter-spacing:.5px}
+.btn-p:hover{background:var(--gold);transform:translateY(-2px)}
+.btn-o{padding:11px 22px;border:1px solid rgba(196,125,58,.45);color:var(--cream);border-radius:40px;font-size:13px;text-decoration:none;transition:all .3s}
+.btn-o:hover{border-color:var(--car);color:var(--car)}
+.crow{display:flex;gap:16px;margin-top:18px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards 1.05s}
+.ci{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}
+.ci a{color:var(--dim);text-decoration:none;transition:color .2s}.ci a:hover{color:var(--car)}
+
+.hright{display:flex;align-items:center;justify-content:center;padding:80px 65px 80px 18px;position:relative;z-index:2}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%}
+.scard{background:rgba(255,255,255,.04);border:1px solid rgba(196,125,58,.16);border-radius:14px;padding:26px 18px;text-align:center;opacity:0;animation:fadeUp .8s ease forwards;transition:all .4s;cursor:none}
+.scard:hover{background:rgba(196,125,58,.09);border-color:var(--car);transform:translateY(-5px) scale(1.02)}
+.scard:nth-child(1){animation-delay:.5s}.scard:nth-child(2){animation-delay:.65s}.scard:nth-child(3){animation-delay:.8s}.scard:nth-child(4){animation-delay:.95s}
+.snum{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--car);line-height:1;margin-bottom:7px}
+.slbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.scrollhint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:0;animation:fadeUp 1s ease forwards 1.5s}
+.sline{width:1px;height:34px;background:linear-gradient(to bottom,transparent,var(--car));animation:pulse 2s ease infinite}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(28,10,4,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(196,125,58,.16);padding:0 80px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nlogo{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);font-style:italic}
+.nlogo span{color:var(--car)}
+.nlinks{display:flex;gap:30px;list-style:none}
+.nlinks a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;position:relative;padding:4px 0}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--car);transition:width .3s}
+.nlinks a:hover{color:var(--car)}.nlinks a:hover::after{width:100%}
+
+/* SECTIONS */
+section{padding:92px 80px}
+.slabel{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--car);margin-bottom:13px;font-weight:500}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(32px,3.6vw,50px);font-weight:700;color:var(--esp);line-height:1.15;margin-bottom:52px}
+.stitle em{font-style:italic;color:var(--car)}
+
+/* EXPERTISE */
+#expertise{background:var(--esp);position:relative;overflow:hidden}
+#expertise .stitle{color:var(--white)}
+#expertise::before{content:'';position:absolute;width:480px;height:480px;border-radius:50%;border:48px solid rgba(196,125,58,.05);top:-150px;right:-70px;pointer-events:none}
+.skgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px}
+.skcard{border:1px solid rgba(196,125,58,.17);border-radius:14px;padding:28px 24px;transition:all .4s;cursor:none;position:relative;overflow:hidden}
+.skcard::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 100%,rgba(196,125,58,.07),transparent 70%);opacity:0;transition:opacity .4s}
+.skcard:hover{border-color:var(--car);transform:translateY(-5px)}.skcard:hover::before{opacity:1}
+.skico{font-size:24px;margin-bottom:13px}
+.skname{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:9px}
+.skdesc{font-size:13px;color:var(--dim);line-height:1.75}
+.otitle{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin-bottom:16px;font-style:italic}
+.otags{display:flex;flex-wrap:wrap;gap:9px}
+.otag{padding:7px 16px;border:1px solid rgba(196,125,58,.28);border-radius:28px;font-size:12.5px;color:var(--cream);transition:all .25s;cursor:none}
+.otag:hover{background:var(--car);border-color:var(--car);color:var(--esp);transform:scale(1.06)}
+
+/* CUPPING WHEEL */
+#wheel{background:var(--parch);text-align:center}
+.wheelwrap{position:relative;display:inline-block}
+#cwsvg{max-width:500px;width:100%}
+#wtip{position:absolute;background:var(--esp);color:var(--cream);padding:7px 13px;border-radius:8px;font-size:11.5px;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;border:1px solid rgba(196,125,58,.3)}
+.wrow{display:flex;align-items:center;gap:56px;flex-wrap:wrap}
+#wdetail{background:rgba(196,125,58,.07);border:1px solid rgba(196,125,58,.18);border-radius:12px;padding:18px;min-height:80px;margin-top:14px}
+
+/* EXPERIENCE */
+#experience{background:var(--parch)}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--car),rgba(196,125,58,.08))}
+.tli{position:relative;margin-bottom:44px;opacity:0;transform:translateX(-14px);transition:all .65s ease}
+.tli.visible{opacity:1;transform:translateX(0)}
+.tldot{position:absolute;left:-32px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--car);border:2px solid var(--parch);box-shadow:0 0 0 3px rgba(196,125,58,.2)}
+.tlperiod{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--car);margin-bottom:4px;font-weight:500}
+.tlrole{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--esp);margin-bottom:3px}
+.tlorg{font-size:13px;color:var(--soft);font-style:italic;margin-bottom:9px}
+.badge{display:inline-block;font-size:10.5px;padding:3px 10px;background:rgba(196,125,58,.1);border:1px solid rgba(196,125,58,.26);border-radius:18px;color:var(--car);margin-bottom:9px;margin-right:4px}
+.tlbuls{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tlbuls li{font-size:14px;line-height:1.65;color:var(--mocha);padding-left:15px;position:relative}
+.tlbuls li::before{content:'▸';position:absolute;left:0;color:var(--car);font-size:10px;top:3px}
+
+/* JOURNEY */
+#journey{background:var(--roast);padding-bottom:56px;overflow:hidden}
+#journey .stitle{color:var(--white)}
+.jtrack{display:flex;gap:20px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--car) rgba(255,255,255,.05);cursor:grab}
+.jtrack:active{cursor:grabbing}
+.jtrack::-webkit-scrollbar{height:4px}.jtrack::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:2px}.jtrack::-webkit-scrollbar-thumb{background:var(--car);border-radius:2px}
+.jcard{flex:0 0 290px;background:rgba(255,255,255,.04);border:1px solid rgba(196,125,58,.17);border-radius:15px;padding:30px 24px;scroll-snap-align:start;transition:all .4s}
+.jcard:hover{background:rgba(196,125,58,.08);border-color:var(--car);transform:translateY(-5px)}
+.jflag{font-size:32px;margin-bottom:13px}
+.jcountry{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--cream);margin-bottom:3px}
+.jevent{font-size:10.5px;color:var(--car);letter-spacing:1px;text-transform:uppercase;margin-bottom:11px;font-weight:500}
+.jdesc{font-size:13px;color:var(--dim);line-height:1.75}
+.scrollcue{text-align:center;margin-top:16px;font-size:10.5px;color:var(--dim);letter-spacing:2px}
+
+/* WORLD MAP */
+#worldmap{background:var(--esp);padding:92px 80px}
+#worldmap .stitle{color:var(--white)}
+.mapwrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(196,125,58,.14)}
+#svgmap{width:100%;display:block}
+.mdot{fill:var(--car);stroke:var(--gold);stroke-width:1.5;cursor:none;transition:r .2s}
+.mpulse{fill:none;stroke:var(--car);opacity:.4;animation:ringout 2.2s ease infinite}
+@keyframes ringout{0%{r:7;opacity:.55;stroke-width:2}100%{r:22;opacity:0;stroke-width:.5}}
+#mtip{position:absolute;background:var(--esp);color:var(--cream);padding:8px 13px;border-radius:8px;font-size:12px;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;border:1px solid rgba(196,125,58,.3);z-index:10}
+
+/* CERTIFICATIONS */
+#certifications{background:var(--parch)}
+.cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ccard{display:flex;gap:16px;align-items:flex-start;padding:24px;background:var(--white);border-radius:12px;border:1px solid rgba(196,125,58,.12);box-shadow:0 4px 16px rgba(28,10,4,.05);transition:all .3s;cursor:none}
+.ccard:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(28,10,4,.1);border-color:var(--car)}
+.cico{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,var(--car),var(--gold));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cname{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--esp);margin-bottom:3px;line-height:1.35}
+.ciss{font-size:11.5px;color:var(--soft)}
+
+/* AWARD */
+#award{background:linear-gradient(135deg,var(--esp),var(--roast));text-align:center;position:relative;overflow:hidden}
+.awbg{position:absolute;font-size:400px;color:rgba(196,125,58,.03);top:50%;left:50%;transform:translate(-50%,-50%);font-family:serif;pointer-events:none;animation:spin 55s linear infinite}
+.awinner{max-width:660px;margin:0 auto;position:relative;z-index:2}
+.awstar{font-size:50px;color:var(--gold);display:block;margin-bottom:18px;animation:spin 22s linear infinite}
+.awtitle{font-family:'Playfair Display',serif;font-size:clamp(26px,3.8vw,40px);font-weight:900;color:var(--white);margin-bottom:9px;font-style:italic}
+.aworg{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--car);margin-bottom:24px;font-weight:500}
+.awdesc{font-size:15.5px;color:rgba(237,217,192,.76);line-height:1.88}
+
+/* FOOTER */
+footer{background:var(--sidebar);padding:52px 80px}
+.ftop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px}
+.fname{font-family:'Playfair Display',serif;font-size:24px;font-style:italic;color:var(--white)}
+.fname span{color:var(--car)}
+.ftag{font-size:12px;color:var(--dim);margin-top:5px}
+.flinks{display:flex;gap:12px;flex-wrap:wrap}
+.flink{padding:9px 18px;border:1px solid rgba(196,125,58,.28);border-radius:28px;color:var(--cream);font-size:12px;text-decoration:none;transition:all .3s}
+.flink:hover{background:var(--car);border-color:var(--car);color:var(--esp)}
+.fbot{border-top:1px solid rgba(196,125,58,.1);padding-top:22px;font-size:11px;color:var(--dim);text-align:center}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}.hright{display:none}
+  section{padding:64px 24px}nav{padding:0 24px}
+  .skgrid{grid-template-columns:1fr 1fr}.cgrid{grid-template-columns:1fr}
+  footer{padding:44px 24px}.ftop{flex-direction:column;gap:22px}
+  .wrow{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="curdot"></div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
+  <div class="steam-box"><div class="stm stm1"></div><div class="stm stm2"></div><div class="stm stm3"></div></div>
+  <div class="hleft">
+    <p class="eyebrow">Coffee Quality Expert &amp; Certified Q-Grader</p>
+    <h1 class="hname">Abebe<br><em>Gebre&shy;michael</em></h1>
+    <p class="hsubtitle">Senior Coffee Cupper IV · Marketing Information Analyst · 30+ Years</p>
+    <div class="hdivider"></div>
+    <p class="hsummary">Certified Q-Grader and Master Trainer with over three decades of expertise across Ethiopian Arabica origins — from the highlands of Harar to the forests of Yirgacheffe. A global ambassador for Ethiopian coffee quality, traceability and market excellence.</p>
+    <div class="hbtns">
+      <a href="abebe_gebremichael_resume.pdf" download class="btn-p">Download CV</a>
+      <a href="#experience" class="btn-o">View Experience</a>
+    </div>
+    <div class="crow">
+      <span class="ci">📞 <a href="tel:6124303478">612-430-3478</a></span>
+      <span class="ci">✉ <a href="mailto:testcoffeeabe@gmail.com">testcoffeeabe@gmail.com</a></span>
+      <span class="ci">💼 <a href="https://linkedin.com/in/abebegebremichael" target="_blank">LinkedIn</a></span>
+    </div>
+  </div>
+  <div class="hright">
+    <div class="sgrid">
+      <div class="scard"><div class="snum" data-target="30" data-suffix="+">30+</div><div class="slbl">Years in Coffee</div></div>
+      <div class="scard"><div class="snum">Q</div><div class="slbl">Grader · CQI USA</div></div>
+      <div class="scard"><div class="snum" data-target="6" data-suffix="+">6+</div><div class="slbl">Countries</div></div>
+      <div class="scard"><div class="snum" data-target="20" data-suffix="+">20+</div><div class="slbl">Exporters Managed</div></div>
+    </div>
+  </div>
+  <div class="scrollhint"><span>Scroll</span><div class="sline"></div></div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nlogo">A<span>.</span>Gebremichael</div>
+  <ul class="nlinks">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#wheel">Cupping</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#worldmap">Map</a></li>
+    <li><a href="#certifications">Credentials</a></li>
+  </ul>
+</nav>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <p class="slabel">What I Do</p>
+  <h2 class="stitle">Core <em>Expertise</em></h2>
+  <div class="skgrid">
+    <div class="skcard reveal"><div class="skico">☕</div><div class="skname">Coffee Cupping &amp; Sensory Analysis</div><div class="skdesc">Certified Q-Grader evaluating fragrance, aroma, flavour, acidity, body, aftertaste, balance and uniformity across all Ethiopian Arabica origins.</div></div>
+    <div class="skcard reveal"><div class="skico">📊</div><div class="skname">Marketing Information Analyst</div><div class="skdesc">Directing collection and dissemination of domestic and global market data to drive export growth, manage price fluctuations and ensure full sector traceability.</div></div>
+    <div class="skcard reveal"><div class="skico">🏛️</div><div class="skname">Regulatory Policy &amp; Compliance</div><div class="skdesc">Developing food safety regulations ensuring compliance with HACCP, FDA and CEF frameworks. Managing licensing and certification for export authorisation.</div></div>
+    <div class="skcard reveal"><div class="skico">🔥</div><div class="skname">Coffee Roasting &amp; Liquoring</div><div class="skdesc">Advanced industrial and artisan roasting expertise gained through UNIDO, ECTA and illy's Università del Caffè in Trieste, Italy.</div></div>
+    <div class="skcard reveal"><div class="skico">🎓</div><div class="skname">Training &amp; Capacity Building</div><div class="skdesc">Master Trainer certified by EAFCA, Kenya. Coordinated international programs with Boot Coffee Consulting and SCAA under USAID funding.</div></div>
+    <div class="skcard reveal"><div class="skico">🌍</div><div class="skname">Export &amp; Trade Development</div><div class="skdesc">Promoting Ethiopian coffee across USA, Italy, France, Morocco, Kenya and beyond — connecting origin quality to global market access.</div></div>
+  </div>
+  <div class="reveal">
+    <p class="otitle">Ethiopian Origins Expertise</p>
+    <div class="otags">
+      <span class="otag">Harar · Eastern Ethiopia</span><span class="otag">Yirgacheffe · SNNPR</span>
+      <span class="otag">Sidama / Sidamo</span><span class="otag">Limu · Oromia</span>
+      <span class="otag">Jimma · Oromia</span><span class="otag">Guji · Oromia</span>
+      <span class="otag">Bebeka · SNNPR</span><span class="otag">Kaffa · SNNPR</span>
+    </div>
+  </div>
+</section>
+
+<!-- CUPPING WHEEL -->
+<section id="wheel">
+  <p class="slabel">Sensory Expertise</p>
+  <h2 class="stitle">Interactive <em>Cupping Wheel</em></h2>
+  <div class="wrow">
+    <div class="wheelwrap reveal">
+      <svg id="cwsvg" viewBox="0 0 500 500"></svg>
+      <div id="wtip"></div>
+    </div>
+    <div class="reveal" style="flex:1;min-width:250px">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--esp);margin-bottom:14px">Hover any segment to explore</p>
+      <p style="font-size:14px;line-height:1.82;color:var(--soft);margin-bottom:16px">As a Certified Q-Grader, Abebe evaluates every dimension of coffee quality using the internationally recognised SCA cupping protocol — assessing up to 10 distinct attributes per lot to produce export-grade quality scores.</p>
+      <div id="wdetail"><p style="font-size:13px;color:var(--mocha);line-height:1.7">Hover a segment on the wheel to learn about each cupping attribute used in professional quality assessment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="slabel">Career Journey</p>
+  <h2 class="stitle">Professional <em>Experience</em></h2>
+  <div class="timeline">
+    <div class="tli">
+      <div class="tldot"></div>
+      <div class="tlperiod">Jan 2021 – Sep 2023</div>
+      <div class="tlrole">Senior Coffee Cupper IV</div>
+      <div class="tlorg">Ethiopian Coffee and Tea Authority (ECTA) · Addis Ababa, Ethiopia</div>
+      <span class="badge">+ Team Leader — Marketing Information Analyst</span>
+      <span class="badge">+ Acting Director — Marketing Directorate</span>
+      <ul class="tlbuls">
+        <li>Evaluated and graded coffee quality across all major Ethiopian Arabica origins against national and international export standards.</li>
+        <li>Directed collection, analysis and dissemination of domestic and global market data to drive export growth and ensure full sector traceability.</li>
+        <li>Developed market forecasts and policy recommendations to enhance the global competitiveness of Ethiopian coffee, tea and spice products.</li>
+        <li>Led regulatory compliance and food safety frameworks (HACCP, FDA, CEF); managed licensing and export authorisation.</li>
+      </ul>
+    </div>
+    <div class="tli">
+      <div class="tldot"></div>
+      <div class="tlperiod">Jan 2010 – Dec 2020</div>
+      <div class="tlrole">Coordinator — Coffee Quality Inspection Center</div>
+      <div class="tlorg">Dire Dawa Coffee Quality Inspection Office · Dire Dawa, Ethiopia</div>
+      <ul class="tlbuls">
+        <li>Directed all technical and administrative operations of the regional inspection center for 10 years.</li>
+        <li>Supervised sampling, grading and cupping of Harar, Yirgacheffe, Limu, Sidama and Jimma coffee lots for export.</li>
+        <li>Coordinated international training with Boot Coffee Consulting and SCAA under USAID funding.</li>
+      </ul>
+    </div>
+    <div class="tli">
+      <div class="tldot"></div>
+      <div class="tlperiod">Jan 1995 – Nov 2008</div>
+      <div class="tlrole">Coffee Quality Inspector, Cupper and Grader</div>
+      <div class="tlorg">Dire Dawa Coffee Quality Inspection Office · Dire Dawa, Ethiopia</div>
+      <ul class="tlbuls">
+        <li>Conducted raw evaluation and cupping for Harar, Yirgacheffe, Limu and Jimma coffee lots over 13 years.</li>
+        <li>Led inventory audits across warehouses of 20+ exporters; enforced sanitation and quality warehouse standards.</li>
+      </ul>
+    </div>
+    <div class="tli">
+      <div class="tldot"></div>
+      <div class="tlperiod">Sep 1990 – Dec 1994</div>
+      <div class="tlrole">Coffee Extension Agent &amp; Inventory Supervisor</div>
+      <div class="tlorg">Eastern Hararghe Region — Ethiopian Government · Hararghe, Ethiopia</div>
+      <ul class="tlbuls">
+        <li>Trained farmers in nursery preparation, red cherry harvesting and post-harvest handling techniques.</li>
+        <li>Supervised quarterly and annual inventory for 20+ exporters' warehouses in the region.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY (horizontal scroll) -->
+<section id="journey">
+  <p class="slabel">Around the World</p>
+  <h2 class="stitle">Global <em>Journey</em></h2>
+  <div class="jtrack" id="jtrack">
+    <div class="jcard"><div class="jflag">🇺🇸</div><div class="jcountry">United States</div><div class="jevent">SCAA Expo · Seattle · 2014</div><div class="jdesc">Represented Ethiopia at North America's premier specialty coffee event. Engaged global buyers on quality positioning, trade opportunities and Ethiopian Arabica market access.</div></div>
+    <div class="jcard"><div class="jflag">🇮🇹</div><div class="jcountry">Italy</div><div class="jevent">Università del Caffè · illy · Trieste</div><div class="jdesc">Completed the prestigious professional certification at illy's world-renowned institute — espresso science, industrial roasting, grinder calibration, barista technique and sensory tasting at the illycaffè plant.</div></div>
+    <div class="jcard"><div class="jflag">🇫🇷</div><div class="jcountry">France</div><div class="jevent">International Coffee Exhibition</div><div class="jdesc">Promoted Ethiopian coffee with live cupping demonstrations, distributed bean samples, engaged buyers in trade discussions and gained comparative experience with coffees from Brazil, Vietnam and East Africa.</div></div>
+    <div class="jcard"><div class="jflag">🇲🇦</div><div class="jcountry">Morocco</div><div class="jevent">International Coffee Exhibition</div><div class="jdesc">Showcased Ethiopian Arabica diversity to North African and Middle Eastern markets. Conducted on-the-spot cuppings and built new export partnerships.</div></div>
+    <div class="jcard"><div class="jflag">🇰🇪</div><div class="jcountry">Kenya</div><div class="jevent">EAFCA Master Trainers · Nairobi</div><div class="jdesc">Certified as Master Trainer by East African Fine Coffees Association — enabling cross-regional training of trainers across East Africa's entire coffee industry.</div></div>
+    <div class="jcard"><div class="jflag">🌐</div><div class="jcountry">Brazil &amp; Vietnam</div><div class="jevent">Comparative Coffee Experience</div><div class="jdesc">Gained valuable hands-on comparative cupping experience with Brazilian and Vietnamese coffees at international exhibitions — broadening knowledge across global origins.</div></div>
+  </div>
+  <p class="scrollcue">← Drag to explore →</p>
+</section>
+
+<!-- WORLD MAP -->
+<section id="worldmap">
+  <p class="slabel">Global Footprint</p>
+  <h2 class="stitle" style="color:var(--white)">Countries <em>Visited</em></h2>
+  <div class="mapwrap">
+    <div id="mtip"></div>
+    <svg id="svgmap" viewBox="0 0 960 480" style="background:#140703">
+      <!-- Simplified continental landmasses -->
+      <path d="M75,75 L195,65 L235,88 L255,128 L235,168 L195,188 L155,198 L115,208 L85,238 L65,218 L55,178 L65,128 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M155,238 L205,228 L235,258 L245,318 L235,368 L205,398 L175,388 L155,358 L145,308 L150,268 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M405,55 L465,50 L495,65 L505,95 L485,115 L455,120 L425,115 L405,95 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M435,125 L495,120 L525,145 L535,195 L530,265 L515,315 L485,335 L455,325 L435,285 L425,225 L425,175 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M515,178 L542,173 L552,190 L547,210 L527,215 L512,204 Z" fill="#2E1208" stroke="rgba(196,125,58,.35)" stroke-width="1"/>
+      <path d="M535,95 L595,90 L615,115 L605,140 L565,145 L540,135 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M585,55 L760,46 L800,76 L810,126 L780,155 L730,160 L680,150 L630,145 L590,125 L577,95 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M730,155 L785,150 L805,175 L795,205 L765,210 L738,195 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+      <path d="M755,268 L838,263 L868,290 L863,330 L828,345 L778,340 L752,310 Z" fill="#2A1008" stroke="#3D1A0C" stroke-width="0.5"/>
+
+      <!-- Animated pulse rings first (behind dots) -->
+      <circle class="mpulse" cx="530" cy="194" r="7" style="animation-delay:0s"/>
+      <circle class="mpulse" cx="135" cy="125" r="7" style="animation-delay:.5s"/>
+      <circle class="mpulse" cx="451" cy="85" r="7" style="animation-delay:1s"/>
+      <circle class="mpulse" cx="430" cy="72" r="7" style="animation-delay:1.5s"/>
+      <circle class="mpulse" cx="415" cy="135" r="7" style="animation-delay:2s"/>
+      <circle class="mpulse" cx="528" cy="216" r="7" style="animation-delay:2.5s"/>
+
+      <!-- Country dots -->
+      <circle class="mdot" cx="530" cy="194" r="7" data-c="Ethiopia" data-i="30+ years · Home of Coffee"/>
+      <circle class="mdot" cx="135" cy="125" r="7" data-c="United States" data-i="SCAA Expo · Seattle 2014"/>
+      <circle class="mdot" cx="451" cy="85" r="7" data-c="Italy" data-i="Università del Caffè · illy Trieste"/>
+      <circle class="mdot" cx="430" cy="72" r="7" data-c="France" data-i="International Coffee Exhibition"/>
+      <circle class="mdot" cx="415" cy="135" r="7" data-c="Morocco" data-i="International Coffee Exhibition"/>
+      <circle class="mdot" cx="528" cy="216" r="7" data-c="Kenya" data-i="EAFCA Master Trainers · Nairobi"/>
+
+      <circle cx="28" cy="458" r="5" fill="#C47D3A"/>
+      <text x="40" y="462" font-size="11" fill="#9E7B65" font-family="DM Sans,sans-serif">Countries visited</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="slabel">Credentials</p>
+  <h2 class="stitle">Certifications &amp; <em>Training</em></h2>
+  <div class="cgrid">
+    <div class="ccard reveal"><div class="cico">🏅</div><div><div class="cname">Certified Q-Grader</div><div class="ciss">Coffee Quality Institute (CQI) · USA</div></div></div>
+    <div class="ccard reveal"><div class="cico">🎓</div><div><div class="cname">Master Trainer</div><div class="ciss">East African Fine Coffees Association (EAFCA) · Kenya</div></div></div>
+    <div class="ccard reveal"><div class="cico">🇮🇹</div><div><div class="cname">Università del Caffè Certificate</div><div class="ciss">illy Coffee · Trieste, Italy</div></div></div>
+    <div class="ccard reveal"><div class="cico">🏭</div><div><div class="cname">Advanced Industrial Roasting</div><div class="ciss">UNIDO &amp; ECTA</div></div></div>
+    <div class="ccard reveal"><div class="cico">🔬</div><div><div class="cname">Coffee Quality Inspection — Raw, Roasting &amp; Liquoring (3-yr CLU)</div><div class="ciss">Ethiopian Coffee &amp; Tea Authority (ECTA)</div></div></div>
+    <div class="ccard reveal"><div class="cico">☕</div><div><div class="cname">Advanced Cupping &amp; Flavor Profile</div><div class="ciss">Boot Coffee Consulting · USA</div></div></div>
+    <div class="ccard reveal"><div class="cico">💧</div><div><div class="cname">Advanced Coffee Liquoring</div><div class="ciss">Boot Coffee Consulting · USA</div></div></div>
+    <div class="ccard reveal"><div class="cico">🌿</div><div><div class="cname">Agribusiness Competitiveness &amp; Leadership</div><div class="ciss">Adama &amp; Hawassa, Ethiopia</div></div></div>
+  </div>
+</section>
+
+<!-- AWARD -->
+<section id="award">
+  <div class="awbg">★</div>
+  <div class="awinner reveal">
+    <span class="awstar">★</span>
+    <div class="awtitle">LOGO Award</div>
+    <div class="aworg">Boot Coffee Consulting &amp; Training · USA</div>
+    <p class="awdesc">Special Contribution Recognition awarded for outstanding coordination of the Harar coffee stakeholder training program at SAMRAT Hotel, Ethiopia. Recognised by Boot Coffee USA for excellence in knowledge transfer and industry capacity building across the Ethiopian coffee sector.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div>
+      <div class="fname">Abebe <span>Gebremichael</span></div>
+      <div class="ftag">Senior Coffee Quality Expert · Alexandria, VA · Available for Opportunities</div>
+    </div>
+    <div class="flinks">
+      <a href="mailto:testcoffeeabe@gmail.com" class="flink">✉ Email</a>
+      <a href="tel:6124303478" class="flink">📞 Call</a>
+      <a href="https://linkedin.com/in/abebegebremichael" target="_blank" class="flink">LinkedIn</a>
+      <a href="abebe_gebremichael_resume.pdf" download class="flink">Download CV</a>
+    </div>
+  </div>
+  <div class="fbot">© 2025 Abebe Gebremichael · Senior Coffee Quality Expert &amp; Certified Q-Grader</div>
+</footer>
+
+<script>
+// Custom cursor
+const cur=document.getElementById('cur'),dot=document.getElementById('curdot');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function ac(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,.skcard,.ccard,.jcard,.otag,.scard,.mdot').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='28px';cur.style.height='28px';cur.style.background='rgba(196,125,58,.15)'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='18px';cur.style.height='18px';cur.style.background='transparent'});
+});
+
+// Scroll reveal
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal,.tli').forEach(el=>ro.observe(el));
+document.querySelectorAll('.skgrid .skcard,.cgrid .ccard').forEach((c,i)=>c.style.transitionDelay=i*.06+'s');
+
+// Counter animation
+function animCount(el){
+  const t=parseInt(el.dataset.target),s=el.dataset.suffix||'';
+  let n=0;const step=Math.ceil(t/35);
+  const iv=setInterval(()=>{n=Math.min(n+step,t);el.textContent=n+s;if(n>=t)clearInterval(iv)},45);
+}
+new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.querySelectorAll('[data-target]').forEach(animCount);e.target.parentNode&&e.target.parentNode.__obs&&e.target.parentNode.__obs.unobserve(e.target)}
+}),{threshold:.3}).observe(document.querySelector('.sgrid'));
+
+// Drag-to-scroll journey
+const jt=document.getElementById('jtrack');
+let isD=false,sx,sl;
+jt.addEventListener('mousedown',e=>{isD=true;sx=e.pageX-jt.offsetLeft;sl=jt.scrollLeft});
+jt.addEventListener('mouseleave',()=>isD=false);
+jt.addEventListener('mouseup',()=>isD=false);
+jt.addEventListener('mousemove',e=>{if(!isD)return;e.preventDefault();jt.scrollLeft=sl-(e.pageX-jt.offsetLeft-sx)*1.5});
+
+// Map tooltip
+const mt=document.getElementById('mtip');
+document.querySelectorAll('.mdot').forEach(d=>{
+  d.addEventListener('mouseenter',()=>{mt.innerHTML='<b>'+d.dataset.c+'</b><br>'+d.dataset.i;mt.style.opacity='1'});
+  d.addEventListener('mousemove',e=>{
+    const r=d.closest('svg').parentElement.getBoundingClientRect();
+    mt.style.left=(e.clientX-r.left+14)+'px';mt.style.top=(e.clientY-r.top-44)+'px';
+  });
+  d.addEventListener('mouseleave',()=>mt.style.opacity='0');
+});
+
+// Cupping wheel
+(function(){
+  const svg=document.getElementById('cwsvg');
+  const tip=document.getElementById('wtip');
+  const det=document.getElementById('wdetail');
+  const CX=250,CY=250,RI=78,RO=192;
+  const segs=[
+    {l:'Fragrance',c:'#C47D3A',d:'The dry aroma of ground coffee before water is added — a key indicator of freshness and volatile compound complexity.'},
+    {l:'Aroma',c:'#B86E2E',d:'The smell released after hot water contacts the grounds. Reveals floral, fruity, nutty or earthy volatile compounds.'},
+    {l:'Flavour',c:'#A05C22',d:'The combined impression of all taste and aroma characteristics experienced in the cup during cupping.'},
+    {l:'Aftertaste',c:'#8C4C18',d:'The quality and duration of flavours that linger after swallowing. Long, pleasant aftertaste signals premium quality.'},
+    {l:'Acidity',c:'#D4982A',d:'The brightness and liveliness in the cup. Ethiopian coffees often display vibrant citric, berry or stone fruit acidity.'},
+    {l:'Body',c:'#C08020',d:'The physical weight and texture of coffee on the palate — from light and tea-like to heavy, syrupy and full.'},
+    {l:'Balance',c:'#AA6C18',d:'How harmoniously all attributes complement each other without any single characteristic overwhelming the cup.'},
+    {l:'Uniformity',c:'#3B1509',d:'Consistency of flavour across all five cups in a sample — critical for export-grade quality certification.'},
+    {l:'Clean Cup',c:'#2A1008',d:'Absence of negative flavours, defects or taints from cherry processing to final cup — essential for specialty grade.'},
+    {l:'Sweetness',c:'#6B3520',d:'A smooth, rounded sweetness indicating presence of certain carbohydrates and the absence of ferment or processing defects.'},
+  ];
+  const N=segs.length,ang=2*Math.PI/N;
+  segs.forEach((seg,i)=>{
+    const a0=i*ang-Math.PI/2,a1=(i+1)*ang-Math.PI/2;
+    const x1=CX+RI*Math.cos(a0),y1=CY+RI*Math.sin(a0);
+    const x2=CX+RO*Math.cos(a0),y2=CY+RO*Math.sin(a0);
+    const x3=CX+RO*Math.cos(a1),y3=CY+RO*Math.sin(a1);
+    const x4=CX+RI*Math.cos(a1),y4=CY+RI*Math.sin(a1);
+    const am=(a0+a1)/2,rl=RO+24;
+
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',`M${x1},${y1}L${x2},${y2}A${RO},${RO},0,0,1,${x3},${y3}L${x4},${y4}A${RI},${RI},0,0,0,${x1},${y1}Z`);
+    p.setAttribute('fill',seg.c);p.setAttribute('stroke','rgba(250,245,239,.1)');p.setAttribute('stroke-width','1');
+    p.style.cursor='none';p.style.transition='opacity .2s,transform .2s';p.style.transformOrigin=`${CX}px ${CY}px`;
+    p.addEventListener('mouseenter',e=>{
+      p.style.opacity='.72';p.style.transform='scale(1.05)';
+      tip.style.opacity='1';tip.textContent=seg.l;
+      det.innerHTML=`<p style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--esp);margin-bottom:7px">${seg.l}</p><p style="font-size:13px;color:var(--mocha);line-height:1.72">${seg.d}</p>`;
+    });
+    p.addEventListener('mousemove',e=>{
+      const r=svg.getBoundingClientRect();
+      tip.style.left=(e.clientX-r.left+10)+'px';tip.style.top=(e.clientY-r.top-34)+'px';
+    });
+    p.addEventListener('mouseleave',()=>{p.style.opacity='1';p.style.transform='scale(1)';tip.style.opacity='0'});
+    svg.appendChild(p);
+
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',CX+rl*Math.cos(am));t.setAttribute('y',CY+rl*Math.sin(am));
+    t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');
+    t.setAttribute('font-size','10');t.setAttribute('fill','#8C6A50');
+    t.setAttribute('font-family','DM Sans,sans-serif');t.setAttribute('font-weight','500');
+    t.textContent=seg.l;svg.appendChild(t);
+  });
+  const cc=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  cc.setAttribute('cx',CX);cc.setAttribute('cy',CY);cc.setAttribute('r',RI-2);
+  cc.setAttribute('fill','#FAF5EF');cc.setAttribute('stroke','rgba(196,125,58,.18)');cc.setAttribute('stroke-width','1');
+  svg.appendChild(cc);
+  const ct=document.createElementNS('http://www.w3.org/2000/svg','text');
+  ct.setAttribute('x',CX);ct.setAttribute('y',CY-7);ct.setAttribute('text-anchor','middle');
+  ct.setAttribute('font-size','13');ct.setAttribute('fill','#1C0A04');
+  ct.setAttribute('font-family','Playfair Display,serif');ct.setAttribute('font-weight','700');ct.setAttribute('font-style','italic');
+  ct.textContent='SCA';svg.appendChild(ct);
+  const ct2=document.createElementNS('http://www.w3.org/2000/svg','text');
+  ct2.setAttribute('x',CX);ct2.setAttribute('y',CY+10);ct2.setAttribute('text-anchor','middle');
+  ct2.setAttribute('font-size','9');ct2.setAttribute('fill','#8C6A50');ct2.setAttribute('font-family','DM Sans,sans-serif');
+  ct2.textContent='Cupping Protocol';svg.appendChild(ct2);
+  svg.setAttribute('viewBox','0 0 500 500');
+})();
+</script>
+</body>
+</html>
